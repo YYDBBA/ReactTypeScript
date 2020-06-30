@@ -1,0 +1,28 @@
+.s-box {
+  height: calc(100% - 60px);
+}
+.s-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 10px 3% 0;
+  height: calc(100% - 100px);
+}
+.s-bottom-left {
+  width: 80%;
+  height: 100%;
+  background-color: #fff;
+}
+.s-bottom-right {
+  width: 19%;
+  padding: 10px 20px;
+  height: 100%;
+  transition: all .5s;
+  background-color: #fff;
+}
+.s-bottom-right:hover{
+  box-shadow: 0px 0px 8px rgb(194, 191, 191);
+}
+.s-input{
+  margin: 10px 0;
+}
