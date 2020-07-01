@@ -1,10 +1,12 @@
 .ant-menu.ant-menu-dark,
 .ant-menu-dark .ant-menu-sub {
-  background-color: rgb(81, 90, 110);
+    background-color: rgb(71, 83, 110);
 }
+
 .ant-menu-dark .ant-menu-inline.ant-menu-sub {
-  background: rgb(67, 83, 116);
+    background: rgb(67, 83, 116);
 }
+
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: #388fe0;
+    background-color: #388fe0;
 }

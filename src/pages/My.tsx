@@ -2,9 +2,9 @@ import React from "react";
 import Echart from "echarts";
 import "./../styles/my.css";
 
-interface IState {
-  echart: any;
-}
+// interface IState {
+//   echart: any;
+// }
 export default class My extends React.Component<any, any> {
   state: any = {
     echart: Echart,

@@ -33,33 +33,36 @@ export default class Equipment extends React.Component<any, IState> {
   }
   public render() {
     return (
-      <div style={{ width: "15%", height: "100%" }}>
-        <Menu
-          defaultSelectedKeys={["/path/1"]}
-          defaultOpenKeys={["sub1"]}
-          mode="inline"
-          theme="dark"
-          onClick={({ item, key }) => {
-            this.goChildRoute({ item, key });
-          }}
-          inlineCollapsed={this.state.collapsed}
-        >
-          <Menu.Item key="/path/1" icon={<PieChartOutlined />}>
-            菜单1
+      <div style={{ width: "15%", height: "100%", backgroundColor: 'rgb(71, 83, 110)' }}>
+        <div className="yy-menu">
+          <Menu
+            defaultSelectedKeys={["/path/1"]}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            theme="dark"
+            onClick={({ item, key }) => {
+              this.goChildRoute({ item, key });
+            }}
+            inlineCollapsed={this.state.collapsed}
+          >
+            <Menu.Item key="/path/1" icon={<PieChartOutlined />}>
+              菜单1
           </Menu.Item>
-          <Menu.Item key="/path/2" icon={<DesktopOutlined />}>
-            菜单2
+            <Menu.Item key="/path/2" icon={<DesktopOutlined />}>
+              菜单2
           </Menu.Item>
-          <Menu.Item key="/path/3" icon={<ContainerOutlined />}>
-            菜单3
+            <Menu.Item key="/path/3" icon={<ContainerOutlined />}>
+              菜单3
           </Menu.Item>
-          <SubMenu key="sub1" icon={<MailOutlined />} title="我有子菜单">
-            <Menu.Item key="/path/4">子菜单</Menu.Item>
-            <Menu.Item key="/path/5">子菜单</Menu.Item>
-            <Menu.Item key="/path/6">子菜单</Menu.Item>
-            <Menu.Item key="/path/7">子菜单</Menu.Item>
-          </SubMenu>
-        </Menu>
+            <SubMenu key="sub1" icon={<MailOutlined />} title="我有子菜单">
+              <Menu.Item key="/path/4">子菜单</Menu.Item>
+              <Menu.Item key="/path/5">子菜单</Menu.Item>
+              <Menu.Item key="/path/6">子菜单</Menu.Item>
+              <Menu.Item key="/path/7">子菜单</Menu.Item>
+            </SubMenu>
+          </Menu>
+
+        </div>
       </div>
     );
   }

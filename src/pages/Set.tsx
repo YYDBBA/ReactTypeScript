@@ -7,7 +7,7 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 interface IState<T, D> {
   columns: Array<T>;
   data: Array<T>;
-  selectedRowKeys: Array<any>;
+  selectedRowKeys: Array<D>;
   loading: boolean;
   btnloading: boolean;
   searchKey: any;
