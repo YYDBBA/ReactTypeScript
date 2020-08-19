@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "antd";
-import { withRouter } from "react-router-dom";
+import './../styles/equipment.css'
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import EquipOne from "./equipment/EquipOne"
+import EquipTwo from "./equipment/EquipTwo"
+import EquipThree from "./equipment/EquipThree"
 
 import {
   PieChartOutlined,
@@ -11,59 +15,47 @@ import {
 
 const { SubMenu } = Menu;
 
-interface IState {
-  collapsed: boolean;
-}
-interface IChildRoute {
-  item: any;
-  key: string;
-}
-@(withRouter as any)
-export default class Equipment extends React.Component<any, IState> {
-  public state: IState = {
-    collapsed: false,
-  };
-  public toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
-  public goChildRoute(obj: IChildRoute) {
-    // this.props.history.push(obj.key);
-  }
-  public render() {
-    return (
-      <div style={{ width: "15%", height: "100%", backgroundColor: 'rgb(71, 83, 110)' }}>
-        <div className="yy-menu">
-          <Menu
-            defaultSelectedKeys={["/path/1"]}
-            defaultOpenKeys={["sub1"]}
-            mode="inline"
-            theme="dark"
-            onClick={({ item, key }) => {
-              this.goChildRoute({ item, key });
-            }}
-            inlineCollapsed={this.state.collapsed}
-          >
-            <Menu.Item key="/path/1" icon={<PieChartOutlined />}>
-              菜单1
+const Equipment: React.FC = (props: any) => {
+  const [collapsed, setCollapsed] = useState(false)
+  return (
+    <div style={{ display: 'flex', height: '100%', width: '100%' }}>
+      <div className="yy-menu">
+        <Menu
+          defaultSelectedKeys={["/home/equipment/one"]}
+          defaultOpenKeys={["sub1"]}
+          mode="inline"
+          theme="dark"
+          onClick={({ item, key }) => {
+            props.history.push(key);
+          }}
+          inlineCollapsed={collapsed}
+        >
+          <Menu.Item key="/home/equipment/one" icon={<PieChartOutlined />}>
+            设备管理
           </Menu.Item>
-            <Menu.Item key="/path/2" icon={<DesktopOutlined />}>
-              菜单2
+          <Menu.Item key="/home/equipment/two" icon={<DesktopOutlined />}>
+            设备类型
           </Menu.Item>
-            <Menu.Item key="/path/3" icon={<ContainerOutlined />}>
-              菜单3
+          <Menu.Item key="/home/equipment/three" icon={<ContainerOutlined />}>
+            设备记录
           </Menu.Item>
-            <SubMenu key="sub1" icon={<MailOutlined />} title="我有子菜单">
-              <Menu.Item key="/path/4">子菜单</Menu.Item>
-              <Menu.Item key="/path/5">子菜单</Menu.Item>
-              <Menu.Item key="/path/6">子菜单</Menu.Item>
-              <Menu.Item key="/path/7">子菜单</Menu.Item>
-            </SubMenu>
-          </Menu>
-
-        </div>
+          <SubMenu key="sub1" icon={<MailOutlined />} title="我有子菜单">
+            <Menu.Item key="/path/4">子菜单</Menu.Item>
+            <Menu.Item key="/path/5">子菜单</Menu.Item>
+            <Menu.Item key="/path/6">子菜单</Menu.Item>
+            <Menu.Item key="/path/7">子菜单</Menu.Item>
+          </SubMenu>
+        </Menu>
       </div>
-    );
-  }
+      <section className="yy-content">
+        <Switch>
+          <Route path='/home/equipment/one' component={EquipOne} />
+          <Route path='/home/equipment/two' component={EquipTwo} />
+          <Route path='/home/equipment/three' component={EquipThree} />
+          <Redirect to='/home/equipment/one' />
+        </Switch>
+      </section>
+    </div>
+  );
 }
+export default withRouter(Equipment)
