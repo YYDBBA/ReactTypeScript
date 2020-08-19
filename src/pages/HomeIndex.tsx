@@ -33,7 +33,7 @@ const HomeIndex: React.FC = (props: any) => {
   const showDrawer = () => {
     if (rightPx) {
       setVisible(!visible)
-      setRightPx(rightPx)
+      setRightPx(0)
     } else {
       setVisible(!visible)
       setRightPx(256)
@@ -98,4 +98,4 @@ const HomeIndex: React.FC = (props: any) => {
   );
 }
 
-export default withRouter(HomeIndex)
+export default withRouter(React.memo(HomeIndex))

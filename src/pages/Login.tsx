@@ -58,4 +58,4 @@ const Login: React.FC = (props: any) => {
   );
 }
 
-export default withRouter(Login)
+export default withRouter(React.memo(Login))

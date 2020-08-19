@@ -5,4 +5,4 @@ const EquipOne: React.FC = (props: any) => {
     <div>设备记录</div>
   )
 }
-export default EquipOne
+export default React.memo(EquipOne)

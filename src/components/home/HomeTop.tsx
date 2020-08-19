@@ -10,4 +10,4 @@ const HomeTop:React.FC=(props: IProps)=> {
     </div>
   );
 }
-export default HomeTop;
+export default React.memo(HomeTop);

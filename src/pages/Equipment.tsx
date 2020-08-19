@@ -58,4 +58,4 @@ const Equipment: React.FC = (props: any) => {
     </div>
   );
 }
-export default withRouter(Equipment)
+export default withRouter(React.memo(Equipment))

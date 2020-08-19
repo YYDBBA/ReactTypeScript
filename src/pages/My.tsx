@@ -53,4 +53,4 @@ const My: React.FC = (props:any) => {
     <div id="main"></div>
   );
 }
-export default My
+export default React.memo(My)

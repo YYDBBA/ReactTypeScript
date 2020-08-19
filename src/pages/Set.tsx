@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useReducer } from "react";
 import { connect } from 'react-redux'
 import { Button } from "antd";
 import "./../styles/set.css";
 
 const Set: React.FC = (props: any) => {
-  const { age, name, changeAge, changeName } = props
   const [count, setCount] = useState(0)
+  const { age, name, changeAge, changeName } = props
   return (<div className="App">
     <Button type="primary" onClick={changeAge}>加年龄</Button>
     <div>{count}</div>
@@ -38,4 +38,4 @@ const mapDispathToProps = (dispatch: any) => {
     }
   }
 }
-export default connect(mapStateToProps, mapDispathToProps)(Set)
+export default connect(mapStateToProps, mapDispathToProps)(React.memo(Set))
