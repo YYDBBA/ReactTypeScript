@@ -1,41 +1,13 @@
-import React, { useState,useReducer } from "react";
-import { connect } from 'react-redux'
-import { Button } from "antd";
-import "./../styles/set.css";
+import React, { useState, useCallback } from "react";
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import SetUI from './setUIComponent/SetUI'
 
-const Set: React.FC = (props: any) => {
+const Set: React.FC<any> = (props) => {
   const [count, setCount] = useState(0)
-  const { age, name, changeAge, changeName } = props
-  return (<div className="App">
-    <Button type="primary" onClick={changeAge}>加年龄</Button>
-    <div>{count}</div>
-    <div>
-      我是{name}，今年{age}
-    </div>
-  </div>)
+  const {name,age} = useSelector((state: any) => ({name: state.name,age: state.age}), shallowEqual);
+  const dispatch = useDispatch();
+  const changeAge = useCallback(() => dispatch({ type: 'CHANGE_AGE' }), [dispatch])
+  const changeName = useCallback(() => dispatch({ type: 'CHANGE_NAME', nameVal: '开心' }), [dispatch])
+  return (<SetUI changeAge={changeAge} changeName={changeName} name={name} age={age} count={count} />)
 }
-
-const mapStateToProps = (state: any) => {
-  return {
-    age: state.age,
-    name: state.name
-  }
-}
-const mapDispathToProps = (dispatch: any) => {
-  return {
-    changeAge() {
-      const action = {
-        type: 'CHANGE_AGE'
-      }
-      dispatch(action)
-    },
-    changeName() {
-      const action = {
-        type: 'CHANGE_NAME',
-        nameVal: '开心'
-      }
-      dispatch(action)
-    }
-  }
-}
-export default connect(mapStateToProps, mapDispathToProps)(React.memo(Set))
+export default React.memo(Set)
